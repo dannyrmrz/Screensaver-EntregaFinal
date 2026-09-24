@@ -1,0 +1,9 @@
+# Ejecutables (el enunciado pide no entregarlos)
+screensaver_seq
+screensaver_par
+screensaver_par_fast
+*.exe
+*.o
+# Capturas intermedias
+*.bmp
+__pycache__/

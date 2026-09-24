@@ -1,0 +1,28 @@
+flowchart TD
+    A([Inicio]) --> B[/"Captura de argumentos: argc, argv"/]
+    B --> C{"Programación defensiva<br/>leerEntero: strtol + puntero final + rango<br/>¿argumento conocido? ¿--n presente?"}
+    C -- inválido --> C1[/"Error descriptivo + imprimirUso"/] --> Z1([Fin, código 1])
+    C -- válido --> D["Configurar OpenMP<br/>omp_set_num_threads, omp_set_schedule"]
+    D --> E["crearFuentes(N, semilla)<br/>mt19937 → colores y órbitas pseudoaleatorias"]
+    E --> F{"¿--verify?"}
+    F -- sí --> V1["Frame v0 y frames v1, v2, v3 en t = 3.7"]
+    V1 --> V2[/"Píxeles distintos, dif. máx. por canal, hash FNV-1a"/]
+    V2 --> Z2([Fin: 0 idénticos, 2 distintos])
+    F -- no --> T{"¿versión 3?"}
+    T -- sí --> T1["crearTablaPolar<br/>SECCIÓN PARALELA: parallel for<br/>r, v, 0.55/r por píxel"]
+    T1 --> G
+    T -- no --> G{"¿--bench?"}
+    G -- sí --> B1["5 frames de calentamiento"]
+    B1 --> B2["Calcular frame en t = i/60<br/>(ver diagrama del frame)<br/>cronometrado con steady_clock"]
+    B2 --> B3{"¿≥ F frames medidos?"}
+    B3 -- no --> B2
+    B3 -- sí --> B4[/"Media, mediana, desv., mín., máx., FPS<br/>+ fila en el CSV"/] --> Z3([Fin, código 0])
+    G -- no --> W["Ventana SDL (RAII): SDL_Init, ventana,<br/>renderer acelerado o software, textura ARGB8888, TTF"]
+    W --> W1{"¿recursos creados?"}
+    W1 -- no --> W2[/"Error con SDL_GetError()"/] --> Z1
+    W1 -- sí --> L{"¿SDL_QUIT, ESC, Q<br/>o se alcanzó --frames?"}
+    L -- no --> P["Calcular frame en t real<br/>(ver diagrama del frame)"]
+    P --> M["Hilo principal, fuera de regiones paralelas:<br/>SDL_UpdateTexture → RenderCopy"]
+    M --> M2[/"Despliegue: FPS, N, resolución,<br/>versión e hilos → RenderPresent"/]
+    M2 --> L
+    L -- sí --> Q["Imprimir FPS promedio<br/>liberar recursos en orden inverso"] --> Z3

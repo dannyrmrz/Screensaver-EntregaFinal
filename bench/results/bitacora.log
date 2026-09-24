@@ -1,0 +1,255 @@
+== Equipo: AMD Ryzen 5 7520U with Radeon Graphics, 8 hilos lógicos
+== Compilador: g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+== Fecha: 2026-09-23 20:30
+== Verificación de correctitud
+Verificacion N=64 800x600 t=3.7 hilos=8 schedule=static
+  v0 secuencial  hash e811ea536f4172b1  suma RGB 93422142
+  v1 paralela    hash e811ea536f4172b1  suma RGB n/a  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v2 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v3 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+Verificacion N=64 800x600 t=3.7 hilos=8 schedule=dynamic:4
+  v0 secuencial  hash e811ea536f4172b1  suma RGB 93422142
+  v1 paralela    hash e811ea536f4172b1  suma RGB n/a  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v2 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v3 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+Verificacion N=64 800x600 t=3.7 hilos=8 schedule=guided
+  v0 secuencial  hash e811ea536f4172b1  suma RGB 93422142
+  v1 paralela    hash e811ea536f4172b1  suma RGB n/a  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v2 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v3 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+Verificacion N=16 1280x720 t=3.7 hilos=8 schedule=static
+  v0 secuencial  hash aba0778f851b1612  suma RGB 164069643
+  v1 paralela    hash aba0778f851b1612  suma RGB n/a  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v2 paralela    hash aba0778f851b1612  suma RGB 164069643  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v3 paralela    hash aba0778f851b1612  suma RGB 164069643  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+-- build -ffast-math (comparar el hash de v0 con el build normal):
+Verificacion N=64 800x600 t=3.7 hilos=8 schedule=static
+  v0 secuencial  hash e811ea536f4172b1  suma RGB 93422142
+  v1 paralela    hash e811ea536f4172b1  suma RGB n/a  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v2 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v3 paralela    hash e811ea536f4172b1  suma RGB 93422142  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+Verificacion N=16 1280x720 t=3.7 hilos=8 schedule=static
+  v0 secuencial  hash aba0778f851b1612  suma RGB 164069643
+  v1 paralela    hash aba0778f851b1612  suma RGB n/a  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v2 paralela    hash aba0778f851b1612  suma RGB 164069643  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+  v3 paralela    hash aba0778f851b1612  suma RGB 164069643  pixeles distintos 0  dif. max canal 0  -> IDENTICA
+== Barrido A: hilos (N=64, 800x600)
+[bench] v0 hilos=1 schedule=- N=64 800x600 | media 1444.286 ms | mediana 1372.512 | desv 306.207 | min 1045.255 | max 1866.346 | 0.69 FPS
+        muestras (ms): 1293.748 1209.415 1451.275 1260.753 1125.296 1045.255 1559.919 1866.346 1768.918 1861.939
+[bench] v1 hilos=1 schedule=static-collapse2 N=64 800x600 | media 1556.399 ms | mediana 1581.600 | desv 148.935 | min 1293.199 | max 1712.697 | 0.64 FPS
+        muestras (ms): 1667.246 1647.421 1708.821 1515.779 1506.053 1293.199 1390.601 1712.697 1684.395 1437.780
+[bench] v2 hilos=1 schedule=static N=64 800x600 | media 1591.261 ms | mediana 1632.240 | desv 197.564 | min 1240.503 | max 1851.639 | 0.63 FPS
+        muestras (ms): 1673.722 1521.835 1590.757 1851.639 1734.394 1770.925 1698.877 1520.666 1240.503 1309.294
+[bench] v3 hilos=1 schedule=static N=64 800x600 | media 1390.517 ms | mediana 1376.526 | desv 192.283 | min 1134.839 | max 1708.544 | 0.72 FPS
+        muestras (ms): 1373.718 1153.740 1134.839 1583.506 1708.544 1379.334 1229.559 1356.662 1603.577 1381.689
+[bench] v3-fast hilos=1 schedule=static N=64 800x600 | media 327.796 ms | mediana 322.772 | desv 26.658 | min 299.624 | max 373.519 | 3.05 FPS
+        muestras (ms): 340.558 335.943 301.482 309.906 310.247 299.624 305.852 365.535 373.519 335.297
+[bench] v1 hilos=2 schedule=static-collapse2 N=64 800x600 | media 743.915 ms | mediana 753.554 | desv 120.187 | min 592.648 | max 914.323 | 1.34 FPS
+        muestras (ms): 627.207 815.210 914.323 824.795 736.903 651.045 592.648 900.536 770.206 606.279
+[bench] v2 hilos=2 schedule=static N=64 800x600 | media 625.273 ms | mediana 622.598 | desv 60.652 | min 554.070 | max 735.961 | 1.60 FPS
+        muestras (ms): 593.254 554.070 639.204 667.631 735.961 605.992 686.857 646.807 563.075 559.878
+[bench] v3 hilos=2 schedule=static N=64 800x600 | media 688.935 ms | mediana 657.768 | desv 163.052 | min 538.627 | max 1090.963 | 1.45 FPS
+        muestras (ms): 639.763 795.715 1090.963 724.725 675.774 694.988 559.025 609.527 560.248 538.627
+[bench] v3-fast hilos=2 schedule=static N=64 800x600 | media 204.872 ms | mediana 206.398 | desv 15.907 | min 180.868 | max 225.940 | 4.88 FPS
+        muestras (ms): 210.131 189.570 187.392 180.868 197.350 207.762 219.604 205.035 225.940 225.069
+[bench] v1 hilos=4 schedule=static-collapse2 N=64 800x600 | media 313.339 ms | mediana 310.190 | desv 13.753 | min 297.905 | max 336.529 | 3.19 FPS
+        muestras (ms): 336.529 305.777 304.382 297.905 298.838 310.208 310.172 315.418 317.682 336.480
+[bench] v2 hilos=4 schedule=static N=64 800x600 | media 370.751 ms | mediana 367.060 | desv 33.643 | min 319.730 | max 434.344 | 2.70 FPS
+        muestras (ms): 346.125 369.963 338.814 319.730 361.839 371.301 364.157 399.041 402.193 434.344
+[bench] v3 hilos=4 schedule=static N=64 800x600 | media 362.255 ms | mediana 367.113 | desv 11.408 | min 337.352 | max 373.344 | 2.76 FPS
+        muestras (ms): 366.118 355.295 368.108 370.335 369.956 349.742 369.237 337.352 363.058 373.344
+[bench] v3-fast hilos=4 schedule=static N=64 800x600 | media 112.836 ms | mediana 113.065 | desv 3.671 | min 106.738 | max 118.053 | 8.86 FPS
+        muestras (ms): 118.053 108.286 113.272 112.858 106.738 109.908 112.777 113.606 115.728 117.132
+[bench] v1 hilos=6 schedule=static-collapse2 N=64 800x600 | media 288.594 ms | mediana 283.694 | desv 31.371 | min 248.464 | max 330.988 | 3.47 FPS
+        muestras (ms): 248.464 288.496 278.893 326.165 302.274 274.116 325.129 330.988 250.755 260.659
+[bench] v2 hilos=6 schedule=static N=64 800x600 | media 281.718 ms | mediana 269.697 | desv 34.206 | min 259.392 | max 374.980 | 3.55 FPS
+        muestras (ms): 285.840 261.912 268.996 261.695 283.106 259.392 270.398 374.980 284.178 266.678
+[bench] v3 hilos=6 schedule=static N=64 800x600 | media 264.704 ms | mediana 257.862 | desv 22.265 | min 236.323 | max 309.746 | 3.78 FPS
+        muestras (ms): 254.648 254.787 309.746 260.938 267.564 236.323 250.751 244.568 277.860 289.850
+[bench] v3-fast hilos=6 schedule=static N=64 800x600 | media 101.247 ms | mediana 95.539 | desv 18.022 | min 91.526 | max 151.903 | 9.88 FPS
+        muestras (ms): 97.625 94.768 101.619 94.674 96.310 97.205 91.526 92.716 94.126 151.903
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 800x600 | media 320.711 ms | mediana 287.740 | desv 75.960 | min 235.838 | max 459.100 | 3.12 FPS
+        muestras (ms): 271.222 285.834 416.762 459.100 402.725 289.646 283.437 296.950 235.838 265.597
+[bench] v2 hilos=8 schedule=static N=64 800x600 | media 238.264 ms | mediana 236.701 | desv 7.880 | min 228.159 | max 255.669 | 4.20 FPS
+        muestras (ms): 243.039 241.787 242.138 228.159 232.780 230.642 236.719 235.020 236.683 255.669
+[bench] v3 hilos=8 schedule=static N=64 800x600 | media 248.553 ms | mediana 248.200 | desv 39.804 | min 201.952 | max 314.016 | 4.02 FPS
+        muestras (ms): 314.016 214.482 201.952 202.200 215.717 295.008 273.450 254.192 242.207 272.309
+[bench] v3-fast hilos=8 schedule=static N=64 800x600 | media 138.563 ms | mediana 115.998 | desv 48.637 | min 98.130 | max 223.572 | 7.22 FPS
+        muestras (ms): 218.650 223.572 173.901 126.989 111.660 107.500 98.130 101.385 103.510 120.336
+== Barrido B: N (800x600, 8 hilos)
+[bench] v0 hilos=1 schedule=- N=4 800x600 | media 241.963 ms | mediana 251.703 | desv 21.893 | min 206.206 | max 267.908 | 4.13 FPS
+        muestras (ms): 206.206 214.185 228.145 223.827 247.923 267.908 256.193 257.906 255.483 261.853
+[bench] v1 hilos=8 schedule=static-collapse2 N=4 800x600 | media 53.231 ms | mediana 51.767 | desv 6.376 | min 46.395 | max 70.222 | 18.79 FPS
+        muestras (ms): 51.532 53.669 46.395 70.222 54.302 52.890 51.205 52.003 50.340 49.747
+[bench] v2 hilos=8 schedule=static N=4 800x600 | media 45.135 ms | mediana 45.773 | desv 2.144 | min 42.463 | max 48.732 | 22.16 FPS
+        muestras (ms): 46.551 42.463 46.330 43.978 46.555 48.732 46.352 42.660 42.514 45.216
+[bench] v3 hilos=8 schedule=static N=4 800x600 | media 35.924 ms | mediana 35.928 | desv 3.712 | min 31.193 | max 41.528 | 27.84 FPS
+        muestras (ms): 37.336 41.528 37.927 40.979 32.033 37.811 31.193 34.519 32.519 33.397
+[bench] v3-fast hilos=8 schedule=static N=4 800x600 | media 25.997 ms | mediana 24.451 | desv 4.418 | min 21.406 | max 35.690 | 38.47 FPS
+        muestras (ms): 23.163 23.696 21.406 25.551 24.992 31.406 35.690 27.404 23.909 22.758
+[bench] v0 hilos=1 schedule=- N=16 800x600 | media 536.374 ms | mediana 538.258 | desv 118.970 | min 372.462 | max 752.402 | 1.86 FPS
+        muestras (ms): 752.402 592.093 537.940 538.575 411.227 645.252 487.790 372.462 612.417 413.579
+[bench] v1 hilos=8 schedule=static-collapse2 N=16 800x600 | media 102.063 ms | mediana 102.533 | desv 7.820 | min 90.189 | max 114.393 | 9.80 FPS
+        muestras (ms): 102.819 111.676 107.097 100.052 95.399 104.007 102.247 90.189 92.748 114.393
+[bench] v2 hilos=8 schedule=static N=16 800x600 | media 97.570 ms | mediana 100.927 | desv 17.941 | min 73.513 | max 121.887 | 10.25 FPS
+        muestras (ms): 110.616 121.887 111.332 112.566 77.210 73.513 91.237 112.272 85.631 79.432
+[bench] v3 hilos=8 schedule=static N=16 800x600 | media 65.199 ms | mediana 62.478 | desv 7.156 | min 59.146 | max 84.285 | 15.34 FPS
+        muestras (ms): 65.954 62.147 68.366 62.183 61.742 62.773 84.285 63.281 59.146 62.117
+[bench] v3-fast hilos=8 schedule=static N=16 800x600 | media 30.324 ms | mediana 29.468 | desv 2.978 | min 26.665 | max 36.295 | 32.98 FPS
+        muestras (ms): 26.665 28.661 27.859 27.718 29.471 29.466 36.295 32.580 32.996 31.532
+[bench] v0 hilos=1 schedule=- N=256 800x600 | media 6697.968 ms | mediana 7000.026 | desv 702.549 | min 5484.538 | max 7346.114 | 0.15 FPS
+        muestras (ms): 5484.538 5711.483 6015.907 7242.763 7203.840 7251.706 6723.274 7185.574 7346.114 6814.478
+[bench] v1 hilos=8 schedule=static-collapse2 N=256 800x600 | media 1074.691 ms | mediana 977.217 | desv 214.665 | min 857.174 | max 1541.382 | 0.93 FPS
+        muestras (ms): 857.174 962.478 989.177 1541.382 1327.963 987.051 967.383 1205.980 947.916 960.411
+[bench] v2 hilos=8 schedule=static N=256 800x600 | media 994.862 ms | mediana 985.812 | desv 42.820 | min 935.653 | max 1063.978 | 1.01 FPS
+        muestras (ms): 969.525 1063.978 986.519 985.106 966.217 1005.260 935.653 1045.240 1039.971 951.150
+[bench] v3 hilos=8 schedule=static N=256 800x600 | media 1030.713 ms | mediana 1031.445 | desv 85.044 | min 896.839 | max 1167.177 | 0.97 FPS
+        muestras (ms): 1038.907 1018.604 1079.071 1048.389 1139.200 944.968 1167.177 896.839 949.990 1023.982
+[bench] v3-fast hilos=8 schedule=static N=256 800x600 | media 406.424 ms | mediana 368.579 | desv 111.060 | min 322.030 | max 691.411 | 2.46 FPS
+        muestras (ms): 691.411 362.894 490.902 374.264 358.714 322.030 342.298 405.429 386.028 330.272
+[bench] v0 hilos=1 schedule=- N=1024 800x600 | media 28979.380 ms | mediana 28857.305 | desv 926.107 | min 27406.520 | max 30533.770 | 0.03 FPS
+        muestras (ms): 27406.520 28783.747 28345.014 28315.655 28620.361 29132.354 28930.863 30203.684 30533.770 29521.835
+[bench] v1 hilos=8 schedule=static-collapse2 N=1024 800x600 | media 2861.887 ms | mediana 2835.486 | desv 214.671 | min 2601.509 | max 3387.912 | 0.35 FPS
+        muestras (ms): 2601.509 2670.544 2953.309 3387.912 2872.302 2894.345 2905.178 2752.522 2782.576 2798.669
+[bench] v2 hilos=8 schedule=static N=1024 800x600 | media 3374.966 ms | mediana 3302.083 | desv 347.807 | min 2929.767 | max 3986.312 | 0.30 FPS
+        muestras (ms): 2929.767 2975.688 3159.059 3693.027 3475.761 3986.312 3173.304 3752.578 3249.458 3354.708
+[bench] v3 hilos=8 schedule=static N=1024 800x600 | media 3541.424 ms | mediana 3447.327 | desv 551.704 | min 2918.144 | max 4478.240 | 0.28 FPS
+        muestras (ms): 2986.693 2918.144 3156.002 3690.045 4201.698 4033.882 4478.240 3054.877 3271.238 3623.417
+[bench] v3-fast hilos=8 schedule=static N=1024 800x600 | media 1353.804 ms | mediana 1338.658 | desv 219.463 | min 1018.925 | max 1678.919 | 0.74 FPS
+        muestras (ms): 1018.925 1389.939 1162.498 1239.912 1163.494 1316.557 1360.758 1638.068 1678.919 1568.971
+== Barrido C: resolución (N=64, 8 hilos)
+[bench] v0 hilos=1 schedule=- N=64 640x480 | media 1057.210 ms | mediana 1066.021 | desv 165.140 | min 781.099 | max 1290.165 | 0.95 FPS
+        muestras (ms): 781.099 1062.517 1164.512 1069.525 1290.165 1247.955 1120.602 1056.256 831.670 947.801
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 640x480 | media 134.481 ms | mediana 131.808 | desv 11.940 | min 119.208 | max 155.643 | 7.44 FPS
+        muestras (ms): 122.891 131.683 139.272 125.725 148.742 155.643 131.933 119.208 126.195 143.522
+[bench] v2 hilos=8 schedule=static N=64 640x480 | media 144.275 ms | mediana 138.819 | desv 12.747 | min 132.651 | max 173.125 | 6.93 FPS
+        muestras (ms): 173.125 138.608 132.651 157.037 137.402 147.245 148.858 134.009 134.784 139.029
+[bench] v3 hilos=8 schedule=static N=64 640x480 | media 126.180 ms | mediana 123.541 | desv 7.463 | min 114.888 | max 141.530 | 7.93 FPS
+        muestras (ms): 141.530 122.533 130.804 122.203 114.888 122.990 128.912 132.603 121.247 124.092
+[bench] v3-fast hilos=8 schedule=static N=64 640x480 | media 60.735 ms | mediana 55.058 | desv 14.839 | min 46.291 | max 87.045 | 16.47 FPS
+        muestras (ms): 50.260 86.982 87.045 61.101 56.623 63.980 52.248 46.291 49.324 53.493
+[bench] v0 hilos=1 schedule=- N=64 1280x720 | media 2815.355 ms | mediana 2716.380 | desv 290.793 | min 2513.899 | max 3313.792 | 0.36 FPS
+        muestras (ms): 3143.846 2622.731 3064.169 2541.450 2998.267 3313.792 2693.448 2513.899 2739.312 2522.635
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 1280x720 | media 614.531 ms | mediana 599.610 | desv 75.205 | min 515.706 | max 747.198 | 1.63 FPS
+        muestras (ms): 549.809 563.009 605.821 655.056 515.706 593.399 607.183 578.745 729.388 747.198
+[bench] v2 hilos=8 schedule=static N=64 1280x720 | media 502.850 ms | mediana 505.266 | desv 62.428 | min 412.423 | max 610.894 | 1.99 FPS
+        muestras (ms): 562.078 553.813 471.359 610.894 502.642 510.332 415.774 481.298 412.423 507.890
+[bench] v3 hilos=8 schedule=static N=64 1280x720 | media 401.159 ms | mediana 395.148 | desv 33.492 | min 360.544 | max 463.607 | 2.49 FPS
+        muestras (ms): 393.531 431.396 399.863 439.302 374.245 384.037 463.607 368.295 396.766 360.544
+[bench] v3-fast hilos=8 schedule=static N=64 1280x720 | media 164.827 ms | mediana 165.757 | desv 7.950 | min 151.609 | max 173.914 | 6.07 FPS
+        muestras (ms): 167.840 156.111 163.674 169.352 173.328 173.914 172.837 151.609 156.819 162.783
+[bench] v0 hilos=1 schedule=- N=64 1920x1080 | media 6841.698 ms | mediana 6905.997 | desv 620.265 | min 5474.396 | max 7615.338 | 0.15 FPS
+        muestras (ms): 5474.396 7007.081 6231.945 6715.547 7184.055 6804.912 6779.472 7173.542 7615.338 7430.689
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 1920x1080 | media 939.649 ms | mediana 928.418 | desv 105.023 | min 824.463 | max 1196.728 | 1.06 FPS
+        muestras (ms): 864.371 1196.728 932.474 976.549 849.039 891.878 983.505 824.463 924.363 953.119
+[bench] v2 hilos=8 schedule=static N=64 1920x1080 | media 884.242 ms | mediana 869.784 | desv 92.480 | min 798.122 | max 1123.004 | 1.13 FPS
+        muestras (ms): 916.257 824.939 889.612 865.429 817.328 874.138 831.889 798.122 1123.004 901.700
+[bench] v3 hilos=8 schedule=static N=64 1920x1080 | media 865.188 ms | mediana 850.834 | desv 55.167 | min 791.256 | max 959.890 | 1.16 FPS
+        muestras (ms): 812.556 821.205 791.256 885.675 845.281 848.168 853.499 945.494 888.857 959.890
+[bench] v3-fast hilos=8 schedule=static N=64 1920x1080 | media 344.332 ms | mediana 340.163 | desv 35.748 | min 308.204 | max 415.268 | 2.90 FPS
+        muestras (ms): 310.205 346.882 308.204 321.178 358.239 310.131 388.175 351.595 333.444 415.268
+== Barrido D: schedule (N=64, 800x600, 8 hilos)
+[bench] v2 hilos=8 schedule=static:8 N=64 800x600 | media 231.370 ms | mediana 223.511 | desv 22.114 | min 202.331 | max 264.584 | 4.32 FPS
+        muestras (ms): 207.568 222.330 219.489 202.331 224.692 252.878 257.664 246.357 215.805 264.584
+[bench] v2 hilos=8 schedule=dynamic:1 N=64 800x600 | media 199.361 ms | mediana 193.377 | desv 18.073 | min 181.810 | max 234.512 | 5.02 FPS
+        muestras (ms): 182.889 187.867 194.567 192.187 197.627 181.810 185.496 216.978 219.674 234.512
+[bench] v2 hilos=8 schedule=dynamic:4 N=64 800x600 | media 232.586 ms | mediana 230.858 | desv 33.948 | min 189.184 | max 307.428 | 4.30 FPS
+        muestras (ms): 232.135 233.687 229.581 262.640 307.428 214.800 189.184 217.482 242.748 196.176
+[bench] v2 hilos=8 schedule=dynamic:16 N=64 800x600 | media 213.183 ms | mediana 214.239 | desv 20.332 | min 186.852 | max 245.920 | 4.69 FPS
+        muestras (ms): 235.677 245.920 232.023 195.371 196.228 219.106 211.899 192.171 186.852 216.580
+[bench] v2 hilos=8 schedule=guided N=64 800x600 | media 198.153 ms | mediana 190.328 | desv 21.538 | min 177.831 | max 240.012 | 5.05 FPS
+        muestras (ms): 179.214 181.649 192.471 240.012 201.958 177.831 188.185 224.867 213.774 181.567
+[bench] v3 hilos=8 schedule=static:8 N=64 800x600 | media 223.923 ms | mediana 226.918 | desv 17.114 | min 198.343 | max 249.040 | 4.47 FPS
+        muestras (ms): 225.598 218.638 228.239 235.463 232.779 202.501 249.040 198.343 206.557 242.070
+[bench] v3 hilos=8 schedule=dynamic:1 N=64 800x600 | media 214.426 ms | mediana 213.250 | desv 28.733 | min 172.126 | max 260.880 | 4.66 FPS
+        muestras (ms): 260.880 242.981 235.020 200.527 221.047 205.453 228.108 174.034 172.126 204.080
+[bench] v3 hilos=8 schedule=dynamic:4 N=64 800x600 | media 210.266 ms | mediana 210.088 | desv 20.375 | min 183.839 | max 242.177 | 4.76 FPS
+        muestras (ms): 190.355 183.839 189.695 229.453 242.177 235.031 197.482 214.451 205.753 214.423
+[bench] v3 hilos=8 schedule=dynamic:16 N=64 800x600 | media 190.566 ms | mediana 191.652 | desv 7.310 | min 177.190 | max 201.115 | 5.25 FPS
+        muestras (ms): 184.323 195.658 187.692 193.285 192.152 201.115 198.808 184.286 191.152 177.190
+[bench] v3 hilos=8 schedule=guided N=64 800x600 | media 177.509 ms | mediana 173.450 | desv 10.061 | min 170.070 | max 196.785 | 5.63 FPS
+        muestras (ms): 170.148 170.070 171.782 173.685 176.550 173.214 195.606 196.785 175.271 171.977
+== Búsqueda de N máximo a 60 FPS (640x480)
+[bench] v0 hilos=1 schedule=- N=1 640x480 | media 127.067 ms | mediana 126.761 | desv 18.069 | min 100.831 | max 152.209 | 7.87 FPS
+        muestras (ms): 147.157 129.322 102.292 119.936 100.831 116.037 124.201 131.811 152.209 146.872
+v0,0,0,7.87
+[bench] v1 hilos=8 schedule=static-collapse2 N=1 640x480 | media 17.025 ms | mediana 16.811 | desv 0.979 | min 15.751 | max 18.823 | 58.74 FPS
+        muestras (ms): 16.062 18.823 17.783 16.399 16.275 15.751 16.625 16.997 17.635 17.904
+v1,0,0,58.74
+[bench] v2 hilos=8 schedule=static N=1 640x480 | media 17.628 ms | mediana 17.706 | desv 1.134 | min 15.985 | max 20.083 | 56.73 FPS
+        muestras (ms): 17.726 16.862 20.083 16.354 18.288 17.484 17.685 17.804 15.985 18.006
+v2,0,0,56.73
+[bench] v3 hilos=8 schedule=static N=1 640x480 | media 10.957 ms | mediana 10.912 | desv 0.477 | min 10.427 | max 11.905 | 91.26 FPS
+        muestras (ms): 10.685 10.856 11.470 10.427 11.058 11.222 10.536 10.448 11.905 10.967
+[bench] v3 hilos=8 schedule=static N=2 640x480 | media 12.567 ms | mediana 12.651 | desv 0.862 | min 10.950 | max 13.950 | 79.58 FPS
+        muestras (ms): 10.950 12.334 13.950 13.078 12.033 11.719 13.195 12.917 13.106 12.384
+[bench] v3 hilos=8 schedule=static N=4 640x480 | media 16.797 ms | mediana 16.671 | desv 1.894 | min 14.694 | max 20.646 | 59.53 FPS
+        muestras (ms): 16.348 18.612 20.646 16.994 15.294 14.694 15.272 14.911 17.796 17.406
+[bench] v3 hilos=8 schedule=static N=3 640x480 | media 14.400 ms | mediana 14.353 | desv 0.911 | min 12.536 | max 15.746 | 69.45 FPS
+        muestras (ms): 14.344 13.696 15.274 15.746 14.363 14.039 14.247 12.536 15.272 14.479
+v3,3,69.45,91.26
+[bench] v3-fast hilos=8 schedule=static N=1 640x480 | media 8.528 ms | mediana 8.480 | desv 0.399 | min 8.060 | max 9.446 | 117.26 FPS
+        muestras (ms): 8.459 8.506 8.060 8.294 8.399 8.753 8.094 9.446 8.501 8.769
+[bench] v3-fast hilos=8 schedule=static N=2 640x480 | media 9.227 ms | mediana 8.831 | desv 1.125 | min 7.893 | max 11.667 | 108.38 FPS
+        muestras (ms): 10.246 11.667 9.421 7.893 8.774 8.194 8.889 8.576 9.921 8.686
+[bench] v3-fast hilos=8 schedule=static N=4 640x480 | media 9.596 ms | mediana 9.701 | desv 0.387 | min 9.061 | max 10.112 | 104.21 FPS
+        muestras (ms): 10.112 9.063 9.972 9.592 9.876 9.720 9.107 9.775 9.061 9.682
+[bench] v3-fast hilos=8 schedule=static N=8 640x480 | media 12.266 ms | mediana 11.610 | desv 1.140 | min 11.288 | max 14.592 | 81.53 FPS
+        muestras (ms): 11.529 11.541 11.288 11.648 12.381 14.592 11.387 13.031 13.688 11.573
+[bench] v3-fast hilos=8 schedule=static N=16 640x480 | media 16.476 ms | mediana 16.209 | desv 0.740 | min 15.743 | max 17.977 | 60.69 FPS
+        muestras (ms): 17.137 17.255 15.743 16.086 15.911 15.919 15.931 17.977 16.331 16.471
+[bench] v3-fast hilos=8 schedule=static N=32 640x480 | media 40.529 ms | mediana 39.379 | desv 4.342 | min 35.055 | max 46.398 | 24.67 FPS
+        muestras (ms): 43.077 39.690 45.305 35.171 38.520 35.055 37.112 46.398 39.068 45.889
+[bench] v3-fast hilos=8 schedule=static N=24 640x480 | media 32.315 ms | mediana 30.222 | desv 4.595 | min 27.048 | max 39.547 | 30.95 FPS
+        muestras (ms): 39.038 30.370 37.503 30.021 30.074 27.048 28.497 29.345 39.547 31.703
+[bench] v3-fast hilos=8 schedule=static N=20 640x480 | media 27.551 ms | mediana 27.528 | desv 4.231 | min 19.797 | max 32.073 | 36.30 FPS
+        muestras (ms): 31.927 32.073 28.900 31.571 26.109 26.155 31.138 23.675 24.166 19.797
+[bench] v3-fast hilos=8 schedule=static N=18 640x480 | media 18.382 ms | mediana 18.125 | desv 1.550 | min 17.033 | max 22.485 | 54.40 FPS
+        muestras (ms): 17.959 18.546 17.989 17.410 17.033 17.145 22.485 18.715 18.262 18.274
+[bench] v3-fast hilos=8 schedule=static N=17 640x480 | media 29.947 ms | mediana 24.250 | desv 10.220 | min 21.549 | max 52.024 | 33.39 FPS
+        muestras (ms): 52.024 35.413 29.801 42.336 24.656 22.939 23.844 23.435 21.549 23.473
+v3-fast,16,60.69,117.26
+== Repetición intercalada de schedules (v3, N=64, 800x600), 3 rondas
+[bench] v3 hilos=8 schedule=static N=64 800x600 | media 198.697 ms | mediana 196.174 | desv 13.865 | min 179.036 | max 229.541 | 5.03 FPS
+        muestras (ms): 196.913 209.556 192.890 198.220 195.435 179.036 194.108 229.541 185.971 205.305
+[bench] v3 hilos=8 schedule=static:8 N=64 800x600 | media 207.390 ms | mediana 195.881 | desv 29.986 | min 177.871 | max 264.605 | 4.82 FPS
+        muestras (ms): 264.605 244.350 218.291 184.453 182.057 177.871 183.108 191.410 200.352 227.403
+[bench] v3 hilos=8 schedule=dynamic:4 N=64 800x600 | media 189.893 ms | mediana 185.606 | desv 13.287 | min 180.741 | max 224.558 | 5.27 FPS
+        muestras (ms): 197.988 224.558 180.741 182.300 187.051 190.006 188.971 181.247 181.906 184.161
+[bench] v3 hilos=8 schedule=dynamic:16 N=64 800x600 | media 199.055 ms | mediana 195.045 | desv 19.236 | min 184.685 | max 250.190 | 5.02 FPS
+        muestras (ms): 194.168 250.190 203.907 195.922 184.685 199.307 185.360 201.286 189.953 185.771
+[bench] v3 hilos=8 schedule=guided N=64 800x600 | media 189.048 ms | mediana 182.950 | desv 16.241 | min 176.295 | max 229.581 | 5.29 FPS
+        muestras (ms): 184.230 229.581 198.082 177.004 176.325 181.669 195.530 181.398 190.362 176.295
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 800x600 | media 245.573 ms | mediana 237.420 | desv 25.387 | min 219.761 | max 310.978 | 4.07 FPS
+        muestras (ms): 260.424 219.761 235.984 238.286 247.004 243.991 230.418 310.978 236.553 232.332
+[bench] v0 hilos=1 schedule=- N=64 800x600 | media 1446.417 ms | mediana 1425.409 | desv 93.912 | min 1333.415 | max 1660.055 | 0.69 FPS
+        muestras (ms): 1660.055 1383.512 1423.820 1333.415 1555.799 1396.650 1407.655 1426.998 1442.534 1433.730
+[bench] v3 hilos=8 schedule=static N=64 800x600 | media 207.700 ms | mediana 201.003 | desv 26.954 | min 174.640 | max 262.485 | 4.82 FPS
+        muestras (ms): 199.485 195.437 187.331 174.640 188.559 218.541 262.485 243.612 202.521 204.388
+[bench] v3 hilos=8 schedule=static:8 N=64 800x600 | media 207.274 ms | mediana 202.787 | desv 21.465 | min 181.018 | max 260.226 | 4.83 FPS
+        muestras (ms): 206.615 196.119 181.018 200.508 192.894 205.066 219.342 213.187 260.226 197.763
+[bench] v3 hilos=8 schedule=dynamic:4 N=64 800x600 | media 171.739 ms | mediana 170.300 | desv 3.324 | min 167.777 | max 176.606 | 5.82 FPS
+        muestras (ms): 169.451 168.196 175.612 175.535 169.723 167.777 176.606 173.890 170.135 170.466
+[bench] v3 hilos=8 schedule=dynamic:16 N=64 800x600 | media 198.593 ms | mediana 189.380 | desv 19.670 | min 178.814 | max 243.678 | 5.04 FPS
+        muestras (ms): 178.814 184.392 188.963 185.683 215.472 207.843 203.773 243.678 189.798 187.516
+[bench] v3 hilos=8 schedule=guided N=64 800x600 | media 201.168 ms | mediana 201.310 | desv 17.441 | min 178.709 | max 233.539 | 4.97 FPS
+        muestras (ms): 202.010 225.705 204.608 189.539 184.288 178.709 200.611 189.141 233.539 203.532
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 800x600 | media 201.978 ms | mediana 198.579 | desv 14.747 | min 189.738 | max 241.426 | 4.95 FPS
+        muestras (ms): 192.046 191.928 198.461 198.698 197.326 241.426 203.234 202.804 189.738 204.119
+[bench] v0 hilos=1 schedule=- N=64 800x600 | media 1555.219 ms | mediana 1598.688 | desv 161.092 | min 1224.810 | max 1716.831 | 0.64 FPS
+        muestras (ms): 1642.759 1688.140 1441.891 1413.190 1554.617 1658.351 1224.810 1495.875 1715.727 1716.831
+[bench] v3 hilos=8 schedule=static N=64 800x600 | media 191.481 ms | mediana 191.881 | desv 9.457 | min 175.203 | max 211.845 | 5.22 FPS
+        muestras (ms): 189.433 175.203 185.558 198.263 191.336 211.845 192.781 192.503 192.425 185.458
+[bench] v3 hilos=8 schedule=static:8 N=64 800x600 | media 197.322 ms | mediana 196.767 | desv 21.520 | min 166.563 | max 228.223 | 5.07 FPS
+        muestras (ms): 212.029 228.223 226.195 178.019 174.992 209.299 166.563 200.901 184.370 192.633
+[bench] v3 hilos=8 schedule=dynamic:4 N=64 800x600 | media 193.220 ms | mediana 189.975 | desv 18.973 | min 174.290 | max 233.995 | 5.17 FPS
+        muestras (ms): 201.133 233.995 210.582 197.592 198.102 177.773 179.474 182.358 176.900 174.290
+[bench] v3 hilos=8 schedule=dynamic:16 N=64 800x600 | media 183.975 ms | mediana 181.875 | desv 12.296 | min 173.858 | max 216.323 | 5.44 FPS
+        muestras (ms): 216.323 182.818 176.363 186.161 185.896 178.202 185.224 173.858 173.971 180.933
+[bench] v3 hilos=8 schedule=guided N=64 800x600 | media 172.334 ms | mediana 170.701 | desv 3.990 | min 168.101 | max 182.272 | 5.80 FPS
+        muestras (ms): 173.988 182.272 173.424 170.061 173.868 168.101 170.154 170.634 170.768 170.075
+[bench] v1 hilos=8 schedule=static-collapse2 N=64 800x600 | media 210.043 ms | mediana 207.570 | desv 12.755 | min 192.767 | max 233.999 | 4.76 FPS
+        muestras (ms): 216.157 208.137 233.999 226.622 204.927 211.777 196.683 207.003 192.767 202.358
+[bench] v0 hilos=1 schedule=- N=64 800x600 | media 1665.154 ms | mediana 1682.426 | desv 146.041 | min 1446.682 | max 1834.931 | 0.60 FPS
+        muestras (ms): 1637.988 1809.530 1834.931 1471.236 1584.372 1446.682 1726.865 1552.410 1800.293 1787.232
+== Listo: bench/results/crudo.csv, bench/results/bitacora.log

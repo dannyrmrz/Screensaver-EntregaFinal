@@ -1,0 +1,21 @@
+flowchart TD
+    A([Calcular frame en t]) --> V{"versión"}
+    V -- "v0 / v1" --> U0["Actualizar las N órbitas<br/>en el hilo principal"]
+    V -- v2 --> U2["SECCIÓN PARALELA<br/>parallel for sobre N<br/>(solo si N ≥ 256)"]
+    V -- v3 --> R3["SECCIÓN PARALELA: una región por frame<br/>parallel reduction(+:suma)"]
+    R3 --> U3["omp for sobre las N fuentes"]
+    U2 --> S1(["Barrera implícita: fuentes listas"])
+    U3 --> S1
+    U0 --> X{"versión"}
+    S1 --> X
+    X -- v0 --> P0["Recorrer filas y columnas en 1 hilo"]
+    X -- v1 --> P1["SECCIÓN PARALELA<br/>parallel for collapse(2) schedule(static)"]
+    X -- v2 --> P2["SECCIÓN PARALELA<br/>parallel for por filas, schedule(runtime)<br/>reduction(+:suma RGB)"]
+    X -- v3 --> P3["omp for por filas, schedule(runtime)<br/>lee r, v, 0.55/r de la tabla"]
+    P0 --> K
+    P1 --> K
+    P2 --> K
+    P3 --> K
+    K["Por píxel (variables privadas):<br/>1. cartesianas → polares<br/>2. doblado del ángulo → simetría<br/>3. u = 0.55/r + 0.35t (túnel)<br/>4. suma de N ondas: interferencia<br/>5. anillos, radios, brillo → HSV → ARGB<br/>escribe pixeles[y·ancho + x] (índice único)"]
+    K --> S2(["Sincronía: barrera implícita al final del for<br/>+ combinación de la reduction<br/>sin critical ni atomic"])
+    S2 --> Z([Frame completo → devolver suma RGB])
